@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import apiRequest from './apiRequest';
 
 function App() {
-        const API_URL = 'http://localhost:3500/items';
+        const API_URL = 'http://localhost:3000/items';
 
         const [items, setItems] = useState([]);
         const [newItem, setNewItem] = useState('');
@@ -108,8 +108,8 @@ function App() {
         />
         <main>
         {isLoading && <p>Loading Items...</p>}
-        {fetchError && <p style={{ color: "blue" }}>{`Error: ${fetchError}`}</p>}
-        {!fetchError && !isLoading && <Content 
+        {!fetchError && <p style={{ color: "red" }}>{`Error: ${fetchError}`}</p>}
+        {!isLoading && <Content 
         items={items.filter(item => ((item.item).toLowerCase()).includes(search.toLowerCase()))}
         handleCheck={handleCheck}
         handleDelete={handleDelete}
